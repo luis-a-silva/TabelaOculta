@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Súmula de Reunião</title>
+</head>
+<body>
+    <div id="tabela" style="opacity:0;position:absolute;z-index:-1">
+        <table border="1" width="100%">
+            <tr>
+                <th>ORIGEM DA REUNIÃO</th>
+                <th>LOCAL DA REUNIÃO</th>
+                <th>DATA/HORA</th>
+            </tr>
+            <tr>
+                <td>Câmara Especializada de Engenharia Civil</td>
+                <td>SEDE - SALVADOR - Conselho REGIONAL DE ENGENHARIA E AGRONOMIA DA BAHIA</td>
+                <td>14/12/2023 das 18:00 as 22:40</td>
+            </tr>
+        </table>
+        <br><br>
+        <table border="1" width="100%">
+            <tr>
+                <th>Coordenador</th>
+                <th>Secretário</th>
+            </tr>
+            <tr>
+                <td>DIOGENES OLIVEIRA SENA</td>
+                <td>MARLICE DE O.MACIEL D.MARQUES</td>
+            </tr>
+        </table>
+        <br><br>
+        <table border="1" width="100%">
+            <tr>
+                <th colspan="2">CONSELHEIROS PRESENTES NA REUNIÃO</th>
+            </tr>
+            <tr>
+                <th>DT Presença</th>
+                <th>Conselheiro</th>
+            </tr>
+            <tr>
+                <td>14/12/2023</td>
+                <td>NOME CONSELHEIRO</td>
+            </tr>
+            <tr>
+                <td>14/12/2023</td>
+                <td>NOME CONSELHEIRO</td>
+            </tr>
+            <tr>
+                <td>14/12/2023</td>
+                <td>NOME CONSELHEIRO</td>
+            </tr>
+            <tr>
+                <td>14/12/2023</td>
+                <td>NOME CONSELHEIRO</td>
+            </tr>
+        </table>   
+         
+    </div>
+    <button id="copiarTabela" onclick="copyTable(document.getElementById('tabela'))">Gerar Tabela</button>
+
+    <script>
+        //document.getElementById('tabela');
+        function copyTable(el) {
+            var body = document.body,
+                range,
+                sel;
+            if (document.createRange && window.getSelection) {
+                range = document.createRange();
+                sel = window.getSelection();
+                sel.removeAllRanges();
+                try {
+                range.selectNodeContents(el);
+                sel.addRange(range);
+                } catch (e) {
+                range.selectNode(el);
+                sel.addRange(range);
+                }
+            } else if (body.createTextRange) {
+                range = body.createTextRange();
+                range.moveToElementText(el);
+                range.select();
+            }
+            document.execCommand("Copy");
+            alert("Copiado para Área de transferência")
+        }                 
+    </script>
+</body>
+</html>
